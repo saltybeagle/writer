@@ -1,6 +1,6 @@
 # Writer
 
-The Substance Writer component is intendet to be a framework for editor development. A writer can be customized easily using extensions (panels, tools, node types) that operate on a defined interface, the Writer API to control the custom editor's behavior.
+The Substance Writer component is intended to be a framework for editor development. A writer can be customized easily using extensions (panels, tools, node types) that operate on a defined interface, the Writer API to control the custom editor's behavior.
 
 ## Writer API
 
@@ -74,11 +74,11 @@ var cSel = writer.getContainerSelection();
 
 *Note: If your selection is not wrapped in a container, `writer.getContainerSelection` will return null.*
 
-TODO: document contaienr selection API.
+TODO: document container selection API.
 
 ## Managing state
 
-Extension can introduce custom state configuration. E.g. if you introduce a new panel for managing entities associated with the document, you would use a new value for contextId to model it.
+Extensions can introduce custom state configuration. E.g. if you introduce a new panel for managing entities associated with the document, you would use a new value for contextId to model it.
 
 You can enter your custom state by calling:
 
@@ -88,7 +88,7 @@ writer.replaceState({
 });
 ```
 
-You extension must now handle that new state, e.g. by creating an instance of a new custom panel:
+Your extension must now handle that new state, e.g. by creating an instance of a new custom panel:
 
 ```js
 // from extensions/entities/stateHandlers.js
@@ -119,7 +119,7 @@ getHighlightedNodes: function(writer) {
 
 ## Usage Examples
 
-Usage of a text property in a custom info panel. Makeing a field editable and annotatable property is as easy as delegating work to a TextProperty component instantiating with a doc and a path to a string property.
+Usage of a text property in a custom info panel. Making a field an editable and annotatable property is as easy as delegating work to a TextProperty component and instantiating with a `doc` and a `path` to a string property.
 
 ```js
   render: function() {
@@ -142,5 +142,5 @@ Usage of a text property in a custom info panel. Makeing a field editable and an
 - Simple scoped Text API's (`TextSelection`, `TextAnnotation`) suitable for many basic (form-based) editing scenarios.
 - More complex Container API (`ContainerSelection`, `ContainerAnnotation` -> speaking multi-node-annotations)
   - Container editing behavior is specified close to container implementation
-    - E.g. ContentContainer editor could should specify which nodes it supports and how it handles edge cases, like braking and joining nodes etc. we should be able to make two different container editor implementations, with a different set of nodes and a different behavior for breaking etc. I think we should not put too much detail into the bare node implementations, to keep them reusable.
-    - Question: When a node (like figure) has components (title, caption), isn't this pretty much like a container? Maybe we could solve the same problem by allowing nested container nodes. Or let's call it composite nodes vs leaf nodes. Anyway something like a figure is structured in a defined way, while a containers primary behavior is managing a list of nodes that can be shuffled individually
+    - E.g. ContentContainer editor could should specify which nodes it supports and how it handles edge cases, like breaking and joining nodes etc. we should be able to make two different container editor implementations, with a different set of nodes and a different behavior for breaking etc. I think we should not put too much detail into the bare node implementations, to keep them reusable.
+    - Question: When a node (like figure) has components (title, caption), isn't this pretty much like a container? Maybe we could solve the same problem by allowing nested container nodes. Or let's call it composite nodes vs leaf nodes. Anyway something like a figure is structured in a defined way, while a container's primary behavior is managing a list of nodes that can be shuffled individually.
